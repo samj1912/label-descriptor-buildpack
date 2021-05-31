@@ -1,0 +1,21 @@
+api = "0.6"
+
+[buildpack]
+id = "sam/label-descriptor"
+version = "0.0.1"
+name = "Label Descriptor"
+desription = "Add labels to your docker image using project descriptor"
+homepage = "https://github.com/samj1912/label-descriptor-buildpack"
+keywords = ["project", "descriptor", "label"]
+
+[[buildpack.licenses]]
+type = "MIT"
+
+[[stacks]]
+id = "io.buildpacks.stacks.bionic"
+
+[[stacks]]
+id = "heroku-18"
+
+[[stacks]]
+id = "heroku-20"
