@@ -15,40 +15,33 @@ pack build --buildpack sam/proc-descriptor myapp
 You can customize the generated labels by creating a `project.toml` file in your application, and a table like:
 
 ```toml
-[[io.buildpacks.processes]]
-type = "<process type>"
-command = "<command>"
-args = ["<arguments>"]
-direct = false
-default = false
+[[io.buildpacks.labels]]
+key = "<label-name>"
+value = "<label-value>"
+
 ```
 
-The keys in the `io.buildpacks.processes` table map directly to [the keys described here.](https://github.com/buildpacks/spec/blob/main/buildpack.md#launchtoml-toml)
+The keys in the `io.buildpacks.labels` table map directly to [the keys described here.](https://github.com/buildpacks/spec/blob/main/buildpack.md#launchtoml-toml)
 
 ## Example
 
 For example create a `project.toml` file with the following content - 
 
 ```
-[[io.buildpacks.processes]]
-type = "web"
-command = "echo"
-args = ["hello"]
-direct = true
+[[io.buildpacks.labels]]
+key = "label-name"
+value = "hello world"
 
-[[io.buildpacks.processes]]
-type = "another-echo"
-command = "echo"
-args = ["$MYVAR"]
-direct = false
-default = false
+
+[[io.buildpacks.labels]]
+key = "another-label-name"
+value = "hello universe"
 ```
 
 Then run - 
 
 ```bash
 pack build --buildpack sam/proc-descriptor myapp
-docker run myapp
-docker run --entrypoint another-echo -e MYVAR=hello myapp
+docker inspect myapp --format '{{ index .Config.Labels "label-name" }}'
 ```
 
