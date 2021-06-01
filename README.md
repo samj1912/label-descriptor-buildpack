@@ -27,7 +27,7 @@ The keys in the `io.buildpacks.labels` table map directly to [the keys described
 
 For example create a `project.toml` file with the following content - 
 
-```
+```toml
 [[io.buildpacks.labels]]
 key = "label-name"
 value = "hello world"
