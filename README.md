@@ -1,4 +1,4 @@
-# Proc Descriptor Buildpack
+# Label Descriptor Buildpack
 
 ![Version](https://img.shields.io/badge/dynamic/json?url=https://cnb-registry-api.herokuapp.com/api/v1/buildpacks/sam/label-descriptor&label=Version&query=$.latest.version)
 
